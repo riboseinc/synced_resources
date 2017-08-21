@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "inherited_resources", "~> 1.6.0"
+  spec.add_dependency "inherited_resources", "~> 1.7.1"
   spec.add_dependency "rails", "~> 4.1.16"
 
   spec.add_development_dependency "bundler", "~> 1.15"
