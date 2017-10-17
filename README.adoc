@@ -1,5 +1,14 @@
 = SyncedResources
 
+image:https://img.shields.io/gem/v/synced_resources.svg[
+	Gem Version, link="https://rubygems.org/gems/synced_resources"]
+image:https://img.shields.io/travis/riboseinc/synced_resources/master.svg[
+	Build Status, link="https://travis-ci.org/riboseinc/synced_resources"]
+image:https://img.shields.io/codeclimate/github/riboseinc/synced_resources.svg[
+	"Code Climate", link="https://codeclimate.com/github/riboseinc/synced_resources"]
+image:https://img.shields.io/codecov/c/github/riboseinc/synced_resources.svg[
+	"Test Coverage", link="https://codecov.io/gh/riboseinc/synced_resources"]
+
 Welcome to your new gem! In this directory, you'll find the files you
 need to be able to package up your Ruby library into a gem. Put your
 Ruby code in the file `lib/synced_resources`. To experiment with that
