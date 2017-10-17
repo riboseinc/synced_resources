@@ -1,3 +1,5 @@
+/.ruby-version
+/.ruby-gemspec
 /.bundle/
 /.yardoc
 /Gemfile.lock
