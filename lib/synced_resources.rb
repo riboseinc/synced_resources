@@ -1,8 +1,9 @@
 # (c) Copyright 2017 Ribose Inc.
 #
 
-require 'inherited_resources'
 require 'responders'
+require 'action_view'
+require 'inherited_resources'
 require 'synced_resources/engine'
 
 module SyncedResources
