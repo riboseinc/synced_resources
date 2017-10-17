@@ -47,7 +47,7 @@ push the `.gem` file to https://rubygems.org[rubygems.org].
 == Contributing
 
 Bug reports and pull requests are welcome on GitHub at
-https://github.com/[USERNAME]/synced_resources. This project is intended
+https://github.com/riboseinc/synced_resources. This project is intended
 to be a safe, welcoming space for collaboration, and contributors are
 expected to adhere to the http://contributor-covenant.org[Contributor
 Covenant] code of conduct.
@@ -61,5 +61,5 @@ http://opensource.org/licenses/MIT[MIT License].
 
 Everyone interacting in the SyncedResources project’s codebases, issue
 trackers, chat rooms and mailing lists is expected to follow the
-https://github.com/%5BUSERNAME%5D/synced_resources/blob/master/CODE_OF_CONDUCT.md[code
+https://github.com/riboseinc/synced_resources/blob/master/CODE_OF_CONDUCT.md[code
 of conduct].
