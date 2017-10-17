@@ -2,6 +2,7 @@
 #
 
 require 'inherited_resources'
+require 'responders'
 require 'synced_resources/engine'
 
 module SyncedResources
