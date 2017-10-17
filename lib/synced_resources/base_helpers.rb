@@ -208,7 +208,8 @@ module SyncedResources
       #           .except(:select)
       #           .select(primary_key_name)
       #           .map(&primary_key_name)
-      all_ids = objects.distinct.pluck(primary_key_name)
+      # all_ids = objects.distinct.pluck(primary_key_name)
+      all_ids = objects.pluck(primary_key_name).uniq
 
       results[:indices] = all_ids
                           .each_with_index.reduce({}) do |acc, (object_id, idx)|
