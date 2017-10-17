@@ -4,4 +4,15 @@ before_install:
   - gem install bundler -v 1.15.3
 
 rvm:
-  - 2.4.0
+  - "2.4"
+  - "2.3"
+  - "2.2.2"
+  - "ruby-head"
+  - "jruby"
+  - "jruby-head"
+
+matrix:
+  allow_failures:
+    - rvm: "ruby-head"
+    - rvm: "jruby-head"
+    - rvm: "jruby"
