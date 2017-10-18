@@ -307,7 +307,7 @@ module SyncedResources
                       end
 
       results, _objects =
-        compose_types.inject([results, objects]) do |(res, objs), compose_type|
+        compose_types.reduce([results, objects]) do |(res, objs), compose_type|
           send(:"_compose_#{compose_type}", res, objs, is_collection, options)
         end
 
