@@ -1,3 +1,6 @@
+require "simplecov"
+SimpleCov.start
+
 require "pp"
 require "bundler/setup"
 require "synced_resources"
