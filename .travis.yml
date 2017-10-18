@@ -1,7 +1,17 @@
 sudo: false
 language: ruby
+
+services:
+  - mysql
+
+env:
+  - DB_USER="travis" DB_NAME="synced_resources_test"
+
 before_install:
   - gem install bundler -v 1.15.3
+
+before_script:
+  - bundle exec rake --rakefile spec/dummy/Rakefile db:create db:migrate
 
 rvm:
   - "2.4"
