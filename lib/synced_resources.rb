@@ -7,7 +7,6 @@ require "inherited_resources"
 require "synced_resources/engine"
 
 module SyncedResources
-
   autoload :Actions,       "synced_resources/actions"
   autoload :BaseHelpers,   "synced_resources/base_helpers"
   autoload :ClassMethods,  "synced_resources/class_methods"
@@ -51,7 +50,6 @@ module SyncedResources
       {}
     end
   }
-
 end
 
 ActiveSupport.on_load(:action_controller) do

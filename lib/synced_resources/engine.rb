@@ -3,8 +3,6 @@
 
 module SyncedResources
   class Railtie < ::Rails::Engine
-
     config.synced_resources = SyncedResources
-
   end
 end

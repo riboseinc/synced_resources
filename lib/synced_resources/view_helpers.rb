@@ -3,7 +3,6 @@
 
 module SyncedResources
   module ViewHelpers
-
     protected
 
     def self.included(base)
@@ -18,6 +17,5 @@ module SyncedResources
         hide_action :view
       end
     end
-
   end
 end

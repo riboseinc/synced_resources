@@ -3,7 +3,6 @@
 
 module SyncedResources
   module ClassMethods
-
     # TODO: Make this 'protected' work:
     # protected
 
@@ -70,7 +69,6 @@ module SyncedResources
     # end
     #
     def route_is_defined_as(string)
-
       collection_name = controller_path.split("/")[0] + "_" + string.pluralize
       instance_name   = collection_name.singularize
 
@@ -105,6 +103,5 @@ module SyncedResources
                     route_collection_name: prefix + collection_name,
                     route_instance_name:   prefix + instance_name
     end
-
   end
 end

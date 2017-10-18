@@ -10,5 +10,4 @@ class DummyResource < ActiveRecord::Base
       create(updated_at: time)
     end
   end
-
 end

@@ -4,7 +4,6 @@
 require "spec_helper"
 
 RSpec.describe SyncedResources::ViewPresenter do
-
   before do
     @list_options = {
       allowed: {
@@ -22,17 +21,14 @@ RSpec.describe SyncedResources::ViewPresenter do
   end
 
   describe "with empty options" do
-
     it "should present the list view" do
       @view = SyncedResources::ViewPresenter.new
       expect(@view.to_s).to eq("list")
       expect(@view.all).to eq(%w[list])
     end
-
   end
 
   describe "defaults" do
-
     before do
       @view = SyncedResources::ViewPresenter.new({}, @list_options)
     end
@@ -51,11 +47,9 @@ RSpec.describe SyncedResources::ViewPresenter do
       expect(@view.order_by).to eq("date")
       expect(@view.direction.to_s).to eq("desc")
     end
-
   end
 
   describe "initialize options" do
-
     it "should ignore invalid params and use defaults instead" do
       @view = SyncedResources::ViewPresenter.new({ view: "x", order_by: "x", direction: "x", page: "x" }, @list_options)
       expect(@view.to_s).to eq("list")
@@ -63,11 +57,9 @@ RSpec.describe SyncedResources::ViewPresenter do
       expect(@view.direction.to_s).to eq("desc")
       expect(@view.page).to eq("1")
     end
-
   end
 
   describe "inquirer" do
-
     it "should present all allowed views" do
       allowed = %w[list expanded thumbnail]
       @view = SyncedResources::ViewPresenter.new({}, allowed: { view: allowed })
@@ -79,7 +71,5 @@ RSpec.describe SyncedResources::ViewPresenter do
       expect(@view.current?("list")).to be true
       expect(@view.current?("x")).to be false
     end
-
   end
-
 end
