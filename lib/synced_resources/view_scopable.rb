@@ -43,14 +43,14 @@ module SyncedResources
           # Ruby-write-expression into the SQL statement.
           #
           # select(arel_table[Arel.star]).
-          view_order(view_presenter)
-            .view_range(view_presenter)
+          view_order(view_presenter).
+            view_range(view_presenter)
         }
 
         # Sets the maximum number of records using params from the view_presenter
         scope :view_range, lambda { |view_presenter|
-          offset(view_presenter.start)
-            .limit(view_presenter.length)
+          offset(view_presenter.start).
+            limit(view_presenter.length)
         }
 
         # Sets the order of records using params from the view_presenter

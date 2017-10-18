@@ -84,9 +84,9 @@ module SyncedResources
     #
     def inherited(base)
       super
-      collection_name = base.controller_path
-                            .tr("/", "_")
-                            .pluralize
+      collection_name = base.controller_path.
+                            tr("/", "_").
+                            pluralize
       instance_name   = collection_name.singularize
 
       # Check if `nested_belongs_to' has been called with > 1 args.
