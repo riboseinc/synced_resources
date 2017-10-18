@@ -3,6 +3,7 @@
 
 require "spec_helper"
 require "active_record"
+require "database_cleaner"
 
 RSpec.describe SyncedResources::Base, type: :controller do
   shared_context "with sync_str" do
@@ -194,15 +195,7 @@ RSpec.describe SyncedResources::Base, type: :controller do
   end
 
   before do
-    begin
-      %w[
-        dummy_resources
-      ].each do |table_name|
-        ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{table_name}")
-      end
-    rescue => e
-      warn e.message
-    end
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   describe DummyController do
