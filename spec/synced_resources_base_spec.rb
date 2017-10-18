@@ -2,7 +2,7 @@
 #
 
 require "spec_helper"
-require 'active_record'
+require "active_record"
 
 RSpec.describe SyncedResources::Base, type: :controller do
 
@@ -22,17 +22,17 @@ RSpec.describe SyncedResources::Base, type: :controller do
     end
   end
 
-  shared_context 'with sync_str worth checking' do
-    include_context 'with sync_str'
+  shared_context "with sync_str worth checking" do
+    include_context "with sync_str"
 
     before do
       jindex options.merge(s: SyncedResources.sync_string_encoder.call(sync_hash))
     end
   end
 
-  shared_context 'skip responding resources included in the sync_str of a synced_at' do
+  shared_context "skip responding resources included in the sync_str of a synced_at" do
 
-    include_context 'with sync_str worth checking'
+    include_context "with sync_str worth checking"
 
     let(:options) { { start: 10, length: 10 } }
 
@@ -47,9 +47,9 @@ RSpec.describe SyncedResources::Base, type: :controller do
 
   end
 
-  shared_context 'skip responding resources included in the sync_str of continuous ids' do
+  shared_context "skip responding resources included in the sync_str of continuous ids" do
 
-    include_context 'with sync_str worth checking'
+    include_context "with sync_str worth checking"
 
     let(:options) { { start: 10, length: 10 } }
 
@@ -66,9 +66,9 @@ RSpec.describe SyncedResources::Base, type: :controller do
 
   end
 
-  shared_context 'skip responding resources included in the sync_str of discrete ids' do
+  shared_context "skip responding resources included in the sync_str of discrete ids" do
 
-    include_context 'with sync_str worth checking'
+    include_context "with sync_str worth checking"
 
     let(:options) { { start: 10, length: 10 } }
 
@@ -91,7 +91,7 @@ RSpec.describe SyncedResources::Base, type: :controller do
 
   end
 
-  shared_examples_for 'a resource controller' do
+  shared_examples_for "a resource controller" do
 
     let(:resource_class) do
       described_class.to_s.constantize.resource_class
@@ -99,29 +99,29 @@ RSpec.describe SyncedResources::Base, type: :controller do
 
     let(:current_time) { resource_class.current_time }
 
-    shared_examples_for 'all successful responses' do
+    shared_examples_for "all successful responses" do
       subject { response }
       it { is_expected.to be_success }
     end
 
-    shared_examples_for 'all resourceful responses' do |objects_length = nil|
+    shared_examples_for "all resourceful responses" do |objects_length = nil|
 
-      it_behaves_like 'all successful responses'
+      it_behaves_like "all successful responses"
 
-      it 'has :total equal to number of all resources' do
+      it "has :total equal to number of all resources" do
         expect(response_hash["total"]).to eq resource_class.all.length
       end
 
-      it 'has :indices with size equal to number in options[:length]' do
+      it "has :indices with size equal to number in options[:length]" do
         expect(response_hash["indices"].length).to eq options[:length]
       end
 
-      it 'has same number of objects as specified' do
+      it "has same number of objects as specified" do
         objects_length ||= options[:length]
         expect(response_hash["objects"].length).to eq objects_length
       end
 
-      it 'has :requested_at' do
+      it "has :requested_at" do
         expect(response_hash).to have_key "requested_at"
       end
 
@@ -136,7 +136,7 @@ RSpec.describe SyncedResources::Base, type: :controller do
         jindex
       end
 
-      it_behaves_like 'all successful responses'
+      it_behaves_like "all successful responses"
 
       # it "has :#{resources_name}" do
       it "has the resources_name as the key" do
@@ -149,8 +149,8 @@ RSpec.describe SyncedResources::Base, type: :controller do
 
     end
 
-    context 'with empty sync_str' do
-      include_context 'with sync_str'
+    context "with empty sync_str" do
+      include_context "with sync_str"
 
       let(:options) { { s: "", start: 0, length: 5 } }
 
@@ -158,9 +158,9 @@ RSpec.describe SyncedResources::Base, type: :controller do
         jindex options
       end
 
-      it_behaves_like 'all resourceful responses'
+      it_behaves_like "all resourceful responses"
 
-      it 'has objects that are covered in range by options' do
+      it "has objects that are covered in range by options" do
         range_start = options[:start] + 1
         range_end   = range_start + options[:length] - 1
         range       = range_start..range_end
@@ -172,15 +172,15 @@ RSpec.describe SyncedResources::Base, type: :controller do
     end
 
 
-    context 'invalid sync_str' do
-      include_context 'with sync_str'
+    context "invalid sync_str" do
+      include_context "with sync_str"
 
-      shared_examples_for 'all invalid sync str responses' do |s|
+      shared_examples_for "all invalid sync str responses" do |s|
         let(:options) { { s: s, start: 10, length: 10 } }
 
-        it_behaves_like 'all successful responses'
+        it_behaves_like "all successful responses"
 
-        it 'ignores the sync str' do
+        it "ignores the sync str" do
           response_object_ids = response_hash["objects"].map do |obj|
             obj["id"]
           end
@@ -193,12 +193,12 @@ RSpec.describe SyncedResources::Base, type: :controller do
         jindex options
       end
 
-      it_behaves_like 'all invalid sync str responses', 'omgwtfbbq'
-      it_behaves_like 'all invalid sync str responses', '/#@$#,_T~B,0'
-      it_behaves_like 'all invalid sync str responses', '1439524794175,_T~B,'
+      it_behaves_like "all invalid sync str responses", "omgwtfbbq"
+      it_behaves_like "all invalid sync str responses", '/#@$#,_T~B,0'
+      it_behaves_like "all invalid sync str responses", "1439524794175,_T~B,"
 
       # obviously incorrect
-      it_behaves_like 'all invalid sync str responses', '1439524794175,_T~121.23!1B,0'
+      it_behaves_like "all invalid sync str responses", "1439524794175,_T~121.23!1B,0"
     end
 
   end
@@ -244,14 +244,14 @@ RSpec.describe SyncedResources::Base, type: :controller do
   end
 
   describe DummyController do
-    it_behaves_like 'a resource controller' do
+    it_behaves_like "a resource controller" do
 
       context do
-        include_context 'skip responding resources included in the sync_str of a synced_at' do
+        include_context "skip responding resources included in the sync_str of a synced_at" do
 
-          it_behaves_like 'all resourceful responses', 5
+          it_behaves_like "all resourceful responses", 5
 
-          it 'contains only 16..20 in :objects' do
+          it "contains only 16..20 in :objects" do
             response_object_ids = response_hash["objects"].map do |obj|
               obj["id"]
             end
@@ -262,11 +262,11 @@ RSpec.describe SyncedResources::Base, type: :controller do
       end
 
       context do
-        include_context 'skip responding resources included in the sync_str of continuous ids' do
+        include_context "skip responding resources included in the sync_str of continuous ids" do
 
-          it_behaves_like 'all resourceful responses', 6
+          it_behaves_like "all resourceful responses", 6
 
-          it 'contains only 15..20 in :objects' do
+          it "contains only 15..20 in :objects" do
             response_object_ids = response_hash["objects"].map do |obj|
               obj["id"]
             end
@@ -278,11 +278,11 @@ RSpec.describe SyncedResources::Base, type: :controller do
       end
 
       context do
-        include_context 'skip responding resources included in the sync_str of discrete ids' do
+        include_context "skip responding resources included in the sync_str of discrete ids" do
 
-          it_behaves_like 'all resourceful responses', 9
+          it_behaves_like "all resourceful responses", 9
 
-          it 'does not contain #13 in :objects' do
+          it "does not contain #13 in :objects" do
             response_object_ids = response_hash["objects"].map do |obj|
               obj["id"]
             end

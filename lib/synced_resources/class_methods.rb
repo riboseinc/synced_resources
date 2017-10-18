@@ -71,7 +71,7 @@ module SyncedResources
     #
     def route_is_defined_as(string)
 
-      collection_name = controller_path.split('/')[0] + '_' + string.pluralize
+      collection_name = controller_path.split("/")[0] + "_" + string.pluralize
       instance_name   = collection_name.singularize
 
       # prevent stuff like `tasks_space_tasks_bug_path'
@@ -87,7 +87,7 @@ module SyncedResources
     def inherited(base)
       super
       collection_name = base.controller_path
-                            .tr('/', '_')
+                            .tr("/", "_")
                             .pluralize
       instance_name   = collection_name.singularize
 
@@ -97,7 +97,7 @@ module SyncedResources
       prefix = if base.parents_symbols.length > 1
                  "#{base.parents_symbols[-1]}_"
                else
-                 ''
+                 ""
                end
 
       # prevent stuff like `tasks_space_tasks_bug_path'

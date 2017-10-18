@@ -1,8 +1,8 @@
 # (c) Copyright 2017 Ribose Inc.
 #
 
-require 'action_dispatch/testing/integration'
-require 'rspec/rails'
+require "action_dispatch/testing/integration"
+require "rspec/rails"
 
 module RequestHelper
 
@@ -12,7 +12,7 @@ module RequestHelper
 
   # JSON-HTTP Request!
   def jhr(method, action, params = {}, session = nil)
-    xhr method, action, { format: 'json' }.merge(params), session
+    xhr method, action, { format: "json" }.merge(params), session
   end
 
   # define #jindex, #jshow, #jupdate, #jdestroy & #jcreate
