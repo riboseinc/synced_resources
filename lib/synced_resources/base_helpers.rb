@@ -109,12 +109,12 @@ module SyncedResources
 
           # TODO: any better way to prevent serialization of destroyed object
           success.json do
-            render json: (action_options.to_s == "destroy" ? {} : results)
-              .to_json(option_hash)
+            render json: (action_options.to_s == "destroy" ? {} : results).
+              to_json(option_hash)
           end
           success.xml do
-            render xml: (action_options.to_s == "destroy" ? {} : results)
-              .to_xml(option_hash.merge(root: "data"))
+            render xml: (action_options.to_s == "destroy" ? {} : results).
+              to_xml(option_hash.merge(root: "data"))
           end
 
           failure.json { render json: resource.errors, status: :unprocessable_entity }
@@ -166,9 +166,9 @@ module SyncedResources
 
         original_ids = objects.pluck(primary_key_name)
 
-        re_objects = klass
-                     .where(klass.arel_table[primary_key_name].in(original_ids))
-                     .where(selected)
+        re_objects = klass.
+                     where(klass.arel_table[primary_key_name].in(original_ids)).
+                     where(selected)
 
       end
 
@@ -207,8 +207,8 @@ module SyncedResources
       # all_ids = objects.distinct.pluck(primary_key_name)
       all_ids = objects.pluck(primary_key_name).uniq
 
-      results[:indices] = all_ids
-                          .each_with_index.reduce({}) do |acc, (object_id, idx)|
+      results[:indices] = all_ids.
+                          each_with_index.reduce({}) do |acc, (object_id, idx)|
                             acc.merge(
                               (offset + idx) => object_id,
                             )
