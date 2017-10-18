@@ -37,7 +37,7 @@ RSpec.describe SyncedResources::Base, type: :controller do
       {}.tap do |h|
         5.times do |i|
           id = i + options[:start] + 1
-          h[id] = time_to_stamp(current_time + 10.hour)
+          h[id] = time_to_stamp(current_time + 10.hours)
         end
       end
     end
