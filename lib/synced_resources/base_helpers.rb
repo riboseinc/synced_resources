@@ -92,7 +92,7 @@ module SyncedResources
         #
         # XXX: don't know why resource.reload unless action_options.to_s == 'destroy'
         # would also fail in index (test spec) ... the object should exist!
-        resource.reload if action_options.to_s == 'update'
+        resource.reload if action_options.to_s == "update"
 
         case [success, failure].compact.length
 
@@ -104,7 +104,7 @@ module SyncedResources
           yield format, results if blk
 
           format.json { render json: results.to_json(option_hash)                    }
-          format.xml  { render xml: results. to_xml(option_hash.merge(root: 'data')) }
+          format.xml  { render xml: results. to_xml(option_hash.merge(root: "data")) }
 
         else # when 2 then "success"-"failure"
 
@@ -112,12 +112,12 @@ module SyncedResources
 
           # TODO: any better way to prevent serialization of destroyed object
           success.json do
-            render json: (action_options.to_s == 'destroy' ? {} : results)
+            render json: (action_options.to_s == "destroy" ? {} : results)
               .to_json(option_hash)
           end
           success.xml do
-            render xml: (action_options.to_s == 'destroy' ? {} : results)
-              .to_xml(option_hash.merge(root: 'data'))
+            render xml: (action_options.to_s == "destroy" ? {} : results)
+              .to_xml(option_hash.merge(root: "data"))
           end
 
           failure.json { render json: resource.errors, status: :unprocessable_entity }
@@ -146,7 +146,7 @@ module SyncedResources
       primary_key_name = klass.primary_key.to_sym
 
       re_objects = objects
-      if klass.column_names.include? 'updated_at'
+      if klass.column_names.include? "updated_at"
         # Needed?
         # primary_key = objects.first[primary_key_name]
         # klass.column_types[primary_key_name].type

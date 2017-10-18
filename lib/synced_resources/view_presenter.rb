@@ -135,7 +135,7 @@ module SyncedResources
 
     DEFAULT_OPTIONS = {
       allowed: { view: %w(list) },
-      default: { view: 'list', entry_name: 'item' }
+      default: { view: "list", entry_name: "item" }
     }
     # Instantiates ViewPresenter. We already have it in ApplicationController,
     # so +view+ method as described above is available in all controllers.
@@ -152,7 +152,7 @@ module SyncedResources
       end
       parsed = {}.merge!(@cfg[:default], &restriction)
       parsed.merge!(params.stringify_keys || {}, &restriction)
-      parsed.reject!{ |key, value| (key == 'action') || (key == 'controller') }
+      parsed.reject!{ |key, value| (key == "action") || (key == "controller") }
       @params = parsed.with_indifferent_access
       self
     end
@@ -173,7 +173,7 @@ module SyncedResources
     #++
     def current
       ActiveSupport::StringInquirer.new(@params[:view].is_a?(Array) ?
-                                        @params[:view].join('') :
+                                        @params[:view].join("") :
                                         @params[:view].to_s)
     end
     alias_method :to_s, :current

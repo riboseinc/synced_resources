@@ -21,7 +21,7 @@ module SyncedResources
           # filter out ids if provided
           ids = view_presenter.params[:ids]
           if ids
-            ids = ids.split(',')
+            ids = ids.split(",")
             composed = composed.where(id: ids)
           end
 

@@ -1,7 +1,7 @@
 # (c) Copyright 2017 Ribose Inc.
 #
 
-require 'action_controller'
+require "action_controller"
 
 module SyncedResources
   class Base < ::ApplicationController # InheritedResources::Base

@@ -13,10 +13,10 @@ RSpec.describe SyncedResources::ViewPresenter do
         direction: %w[asc desc],
       },
       default: {
-        view:      'list',
-        order_by:  'date',
-        direction: 'desc',
-        page:      '1',
+        view:      "list",
+        order_by:  "date",
+        direction: "desc",
+        page:      "1",
       }
     }
   end
@@ -25,7 +25,7 @@ RSpec.describe SyncedResources::ViewPresenter do
 
     it "should present the list view" do
       @view = SyncedResources::ViewPresenter.new
-      expect(@view.to_s).to eq('list')
+      expect(@view.to_s).to eq("list")
       expect(@view.all).to eq(%w[list])
     end
 
@@ -38,18 +38,18 @@ RSpec.describe SyncedResources::ViewPresenter do
     end
 
     it "should present the list view" do
-      expect(@view.current).to eq('list')
-      expect(@view.to_s).to eq('list')
-      expect(@view.to_param).to eq('list')
+      expect(@view.current).to eq("list")
+      expect(@view.to_s).to eq("list")
+      expect(@view.to_param).to eq("list")
     end
 
     it "should present the first page" do
-      expect(@view.page).to eq('1')
+      expect(@view.page).to eq("1")
     end
 
     it "should present direction descending by date" do
-      expect(@view.order_by).to eq('date')
-      expect(@view.direction.to_s).to eq('desc')
+      expect(@view.order_by).to eq("date")
+      expect(@view.direction.to_s).to eq("desc")
     end
 
   end
@@ -57,11 +57,11 @@ RSpec.describe SyncedResources::ViewPresenter do
   describe "initialize options" do
 
     it "should ignore invalid params and use defaults instead" do
-      @view = SyncedResources::ViewPresenter.new({ view: 'x', order_by: 'x', direction: 'x', page: 'x' }, @list_options)
-      expect(@view.to_s).to eq('list')
-      expect(@view.order_by).to eq('date')
-      expect(@view.direction.to_s).to eq('desc')
-      expect(@view.page).to eq('1')
+      @view = SyncedResources::ViewPresenter.new({ view: "x", order_by: "x", direction: "x", page: "x" }, @list_options)
+      expect(@view.to_s).to eq("list")
+      expect(@view.order_by).to eq("date")
+      expect(@view.direction.to_s).to eq("desc")
+      expect(@view.page).to eq("1")
     end
 
   end
@@ -75,9 +75,9 @@ RSpec.describe SyncedResources::ViewPresenter do
     end
 
     it "should support view.current?" do
-      @view = SyncedResources::ViewPresenter.new(view: 'list')
-      expect(@view.current?('list')).to be true
-      expect(@view.current?('x')).to be false
+      @view = SyncedResources::ViewPresenter.new(view: "list")
+      expect(@view.current?("list")).to be true
+      expect(@view.current?("x")).to be false
     end
 
   end
