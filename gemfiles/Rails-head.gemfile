@@ -1,4 +1,4 @@
-eval File.read "gemfiles/common.gemfile"
+eval File.read "gemfiles/common.gemfile" # rubocop:disable Security/Eval
 
 gem "rails", github: "rails/rails"
 gem "arel", github: "rails/arel"
