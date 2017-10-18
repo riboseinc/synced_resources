@@ -134,7 +134,7 @@ module SyncedResources
 
     DEFAULT_OPTIONS = {
       allowed: { view: %w(list) },
-      default: { view: "list", entry_name: "item" }
+      default: { view: "list", entry_name: "item" },
     }
     # Instantiates ViewPresenter. We already have it in ApplicationController,
     # so +view+ method as described above is available in all controllers.

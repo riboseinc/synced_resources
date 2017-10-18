@@ -155,7 +155,7 @@ module SyncedResources
 
         selected_relations = synced_at_map.map do |object_id, synced_at|
           klass.arel_table[primary_key_name].eq(object_id).and(
-            klass.arel_table[:updated_at].gt(self.class.synced_at_to_time(synced_at).to_s(:db))
+            klass.arel_table[:updated_at].gt(self.class.synced_at_to_time(synced_at).to_s(:db)),
           )
         end
 

@@ -16,7 +16,7 @@ RSpec.describe SyncedResources::ViewPresenter do
         order_by:  "date",
         direction: "desc",
         page:      "1",
-      }
+      },
     }
   end
 
