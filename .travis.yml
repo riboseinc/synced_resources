@@ -11,7 +11,7 @@ before_install:
   - gem install bundler -v 1.15.3
 
 before_script:
-  - bundle exec rake --rakefile spec/dummy/Rakefile db:create db:migrate
+  - mysql -e 'CREATE DATABASE $DB_NAME;'
 
 rvm:
   - "2.4"
