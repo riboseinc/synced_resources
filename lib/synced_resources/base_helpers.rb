@@ -167,8 +167,8 @@ module SyncedResources
         original_ids = objects.pluck(primary_key_name)
 
         re_objects = klass.
-                     where(klass.arel_table[primary_key_name].in(original_ids)).
-                     where(selected)
+          where(klass.arel_table[primary_key_name].in(original_ids)).
+          where(selected)
 
       end
 
@@ -208,11 +208,11 @@ module SyncedResources
       all_ids = objects.pluck(primary_key_name).uniq
 
       results[:indices] = all_ids.
-                          each_with_index.reduce({}) do |acc, (object_id, idx)|
-                            acc.merge(
-                              (offset + idx) => object_id,
-                            )
-                          end
+        each_with_index.reduce({}) do |acc, (object_id, idx)|
+        acc.merge(
+          (offset + idx) => object_id,
+        )
+      end
 
       [results, objects]
     end
@@ -285,7 +285,7 @@ module SyncedResources
       # determine if we're given a collection or just a single instance
       # This is used to determine how the object(s) is(are) presented.
       is_collection = object_or_objects.is_a?(ActiveRecord::Relation) ||
-                      object_or_objects.is_a?(Enumerable)
+        object_or_objects.is_a?(Enumerable)
 
       # get ourselves some homogeneous data to work on...
       objects = (is_collection ? object_or_objects : [object_or_objects])
