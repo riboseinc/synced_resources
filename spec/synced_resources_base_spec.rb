@@ -193,28 +193,6 @@ RSpec.describe SyncedResources::Base, type: :controller do
     described_class.to_s.constantize.resource_class.name.pluralize.underscore
   end
 
-  # URL:
-  # http://blog.spoolz.com/2015/02/05/create-an-in-memory-temporary-activerecord-table-for-testing/
-  before(:all) do
-    # don't output all the migration activity
-    # ActiveRecord::Migration.verbose = false
-
-    begin
-      ActiveRecord::Schema.define(version: 1) do
-        drop_table :dummy_resources
-      end
-    rescue => e
-      warn e.backtrace
-    end
-
-    ActiveRecord::Schema.define(version: 1) do
-      create_table :dummy_resources do |t|
-        t.datetime :updated_at
-        t.datetime "created_at"
-      end
-    end
-  end
-
   before do
     begin
       %w[
