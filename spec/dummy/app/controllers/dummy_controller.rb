@@ -1,5 +1,5 @@
 class DummyController < SyncedResources::Base
-  before_filter :forbid_guest_user!, except: :index
+  before_action :forbid_guest_user!, except: :index
   defaults resource_class: DummyResource
 
   def index
