@@ -3,7 +3,7 @@
 
 module SyncedResources
   class ViewPresenter
-    # ViewPresenter helps with view params handling, checks restrictions, 
+    # ViewPresenter helps with view params handling, checks restrictions,
     # handle defauls, and provides handy access.
     #
     # == Tutorial
@@ -151,7 +151,7 @@ module SyncedResources
       end
       parsed = {}.merge!(@cfg[:default], &restriction)
       parsed.merge!(params.stringify_keys || {}, &restriction)
-      parsed.reject!{ |key, value| (key == "action") || (key == "controller") }
+      parsed.reject! { |key, value| (key == "action") || (key == "controller") }
       @params = parsed.with_indifferent_access
       self
     end
