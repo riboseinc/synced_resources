@@ -241,7 +241,7 @@ module SyncedResources
           }
         else
           tlk = options[:top_level_key]
-          if tlk && !tlk.blank?
+          if tlk && tlk.present?
             {
               tlk => objects[0],
             }

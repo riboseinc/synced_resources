@@ -312,7 +312,7 @@ module SyncedResources
     end
 
     def tags_applied?
-      !tags_filter.blank?
+      tags_filter.present?
     end
   end
 end
