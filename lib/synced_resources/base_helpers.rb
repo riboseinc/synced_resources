@@ -59,11 +59,11 @@ module SyncedResources
     # convenience method
     def extract_parameters(arguments)
       case arguments.length
-      when 0 then       [ resource, {} ]
+      when 0 then [resource, {}]
       when 1 then
         case a = arguments[0]
-        when Hash then  [ resource, a  ]
-        else            [ a       , {} ]
+        when Hash then  [resource, a]
+        else            [a, {}]
         end
       else # 2
         arguments
@@ -290,7 +290,7 @@ module SyncedResources
       # get ourselves some homogeneous data to work on...
       objects = (is_collection ? object_or_objects : [object_or_objects])
       # compose_types = if objects.respond_to?(:view_order_range)
-      is_ranged = !! options[:s]
+      is_ranged = !!options[:s]
       compose_types = if is_ranged
                         %i[
                           requested_at
