@@ -2,6 +2,7 @@ AllCops:
   Include:
   - "**/*.rake"
   - "**/Gemfile"
+  - "gemfiles/*.gemfile"
   - "**/Rakefile"
   Exclude:
   - "vendor/**/*"
