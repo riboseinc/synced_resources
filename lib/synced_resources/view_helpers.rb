@@ -14,7 +14,7 @@ module SyncedResources
           )
         end
         helper_method :view
-        hide_action :view
+        private :view
       end
     end
   end
