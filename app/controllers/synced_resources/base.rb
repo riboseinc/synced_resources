@@ -5,7 +5,6 @@ require "action_controller"
 
 module SyncedResources
   class Base < ::ApplicationController # InheritedResources::Base
-
     def self.synced_resources(base)
       base.class_eval do
         inherit_resources
@@ -19,6 +18,5 @@ module SyncedResources
     def self.inherited(base)
       synced_resources(base)
     end
-
   end
 end

@@ -3,10 +3,8 @@
 
 module SyncedResources
   module ViewScopable
-
     def self.included(base)
       base.class_eval do
-
         scope :view_all, lambda { |view_presenter|
           # Using group together with count will return a hash instead of a
           # numeric result.  We prevent that by disabling the group here
@@ -41,7 +39,6 @@ module SyncedResources
 
         # Sets the order and range of records using params from the view_presenter
         scope :view_order_range, lambda { |view_presenter|
-
           # NOTE: Arel.star messes up .count by injecting the
           # Ruby-write-expression into the SQL statement.
           #
@@ -79,7 +76,6 @@ module SyncedResources
             all
           end.group(arel_table[primary_key])
         }
-
       end
     end
   end

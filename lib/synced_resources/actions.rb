@@ -3,7 +3,6 @@
 
 module SyncedResources
   module Actions
-
     #
     # override-able RESTful responses
     #
@@ -58,6 +57,5 @@ module SyncedResources
         super &respond_with_resources(collection)
       end
     end
-
   end
 end

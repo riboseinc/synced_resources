@@ -5,7 +5,6 @@ require "action_dispatch/testing/integration"
 require "rspec/rails"
 
 module RequestHelper
-
   def time_to_stamp(time)
     (time.to_f * 1000).to_i - SyncedResources.base_time
   end
@@ -44,7 +43,6 @@ module RequestHelper
 
   # define #jget, #jput, #jdelete, #jpost
   %i[get put delete post].each do |method|
-
     # Showing the commented-out generated method signatures here for easier
     # search.
 

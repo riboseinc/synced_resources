@@ -15,5 +15,4 @@ class DummyController < SyncedResources::Base
   def collection
     DummyResource.all
   end
-
 end

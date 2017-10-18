@@ -3,7 +3,6 @@
 
 module SyncedResources
   module BaseHelpers
-
     protected
 
     # Wrap Rails's #respond_to with our own formatting routines for JSON &
@@ -78,12 +77,10 @@ module SyncedResources
     # :with_individual].
     #
     def respond_with_resources_sf(results, action_options, view_options = (DEFAULT_VIEW_OPTIONS rescue []), &blk)
-
       option_hash = { view: view_options }
 
       # lambda {|*format_succ_fail|  # <-- does not work
       lambda { |success, failure = nil|
-
         # We reload to fix this : update readonly attribute -> it returns the
         # "updated" object (object in database is not changed), but we expect
         # to receive the correct (unchanged) object in database
@@ -192,7 +189,6 @@ module SyncedResources
     private :_compose_range_total
 
     def _compose_indices(results, objects, _is_collection, _options = {})
-
       klass = objects.klass
       primary_key_name = klass.primary_key.to_sym
 
@@ -238,7 +234,6 @@ module SyncedResources
     private :_compose_ranged_outer_layer
 
     def _compose_outer_layer(results, objects, is_collection, options = {})
-
       results.merge!(
         if is_collection
           {
@@ -269,7 +264,6 @@ module SyncedResources
     # that #additional_data can just do #map, #each, etc. on it.
     #
     def _compose_additional_data(results, objects, _is_collection, options = {})
-
       if options[:additional_data] && respond_to?(:additional_data, true)
         case method(:additional_data).arity
         when 0 then results.merge! additional_data
@@ -320,6 +314,5 @@ module SyncedResources
       # return it!
       results
     end
-
   end
 end

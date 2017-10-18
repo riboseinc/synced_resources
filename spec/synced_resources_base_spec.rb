@@ -5,9 +5,7 @@ require "spec_helper"
 require "active_record"
 
 RSpec.describe SyncedResources::Base, type: :controller do
-
   shared_context "with sync_str" do
-
     before do
       resource_sets = 4
       set_size      = 5
@@ -31,7 +29,6 @@ RSpec.describe SyncedResources::Base, type: :controller do
   end
 
   shared_context "skip responding resources included in the sync_str of a synced_at" do
-
     include_context "with sync_str worth checking"
 
     let(:options) { { start: 10, length: 10 } }
@@ -44,11 +41,9 @@ RSpec.describe SyncedResources::Base, type: :controller do
         end
       end
     end
-
   end
 
   shared_context "skip responding resources included in the sync_str of continuous ids" do
-
     include_context "with sync_str worth checking"
 
     let(:options) { { start: 10, length: 10 } }
@@ -63,11 +58,9 @@ RSpec.describe SyncedResources::Base, type: :controller do
         end
       end
     end
-
   end
 
   shared_context "skip responding resources included in the sync_str of discrete ids" do
-
     include_context "with sync_str worth checking"
 
     let(:options) { { start: 10, length: 10 } }
@@ -88,11 +81,9 @@ RSpec.describe SyncedResources::Base, type: :controller do
         20 => timestamps[3],
       }
     end
-
   end
 
   shared_examples_for "a resource controller" do
-
     let(:resource_class) do
       described_class.to_s.constantize.resource_class
     end
@@ -105,7 +96,6 @@ RSpec.describe SyncedResources::Base, type: :controller do
     end
 
     shared_examples_for "all resourceful responses" do |objects_length = nil|
-
       it_behaves_like "all successful responses"
 
       it "has :total equal to number of all resources" do
@@ -124,13 +114,11 @@ RSpec.describe SyncedResources::Base, type: :controller do
       it "has :requested_at" do
         expect(response_hash).to have_key "requested_at"
       end
-
     end
 
     let(:response_hash) { JSON.parse(response.body) }
 
     context "without sync_str" do
-
       before do
         resource_class.add 20, current_time
         jindex
@@ -146,7 +134,6 @@ RSpec.describe SyncedResources::Base, type: :controller do
       it "has same number of objects in the resources_name key" do
         expect(response_hash[resources_name].length).to eq resource_class.all.length
       end
-
     end
 
     context "with empty sync_str" do
@@ -170,7 +157,6 @@ RSpec.describe SyncedResources::Base, type: :controller do
         end
       end
     end
-
 
     context "invalid sync_str" do
       include_context "with sync_str"
@@ -200,14 +186,12 @@ RSpec.describe SyncedResources::Base, type: :controller do
       # obviously incorrect
       it_behaves_like "all invalid sync str responses", "1439524794175,_T~121.23!1B,0"
     end
-
   end
 
   def resources_name
     # described_class.resource_class.name.pluralize.underscore
     described_class.to_s.constantize.resource_class.name.pluralize.underscore
   end
-
 
   # URL:
   # http://blog.spoolz.com/2015/02/05/create-an-in-memory-temporary-activerecord-table-for-testing/
@@ -245,10 +229,8 @@ RSpec.describe SyncedResources::Base, type: :controller do
 
   describe DummyController do
     it_behaves_like "a resource controller" do
-
       context do
         include_context "skip responding resources included in the sync_str of a synced_at" do
-
           it_behaves_like "all resourceful responses", 5
 
           it "contains only 16..20 in :objects" do
@@ -263,7 +245,6 @@ RSpec.describe SyncedResources::Base, type: :controller do
 
       context do
         include_context "skip responding resources included in the sync_str of continuous ids" do
-
           it_behaves_like "all resourceful responses", 6
 
           it "contains only 15..20 in :objects" do
@@ -274,12 +255,10 @@ RSpec.describe SyncedResources::Base, type: :controller do
             expect(response_object_ids).to eq (15..20).to_a
           end
         end
-
       end
 
       context do
         include_context "skip responding resources included in the sync_str of discrete ids" do
-
           it_behaves_like "all resourceful responses", 9
 
           it "does not contain #13 in :objects" do
@@ -289,7 +268,6 @@ RSpec.describe SyncedResources::Base, type: :controller do
 
             expect(response_object_ids).to_not be_include 13
           end
-
         end
       end
     end

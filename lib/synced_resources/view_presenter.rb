@@ -132,7 +132,6 @@ module SyncedResources
     #
     # ...these params will have passed params merged into default ones.
 
-
     DEFAULT_OPTIONS = {
       allowed: { view: %w(list) },
       default: { view: "list", entry_name: "item" }
@@ -315,6 +314,5 @@ module SyncedResources
     def tags_applied?
       !tags_filter.blank?
     end
-
   end
 end
