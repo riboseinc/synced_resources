@@ -26,8 +26,9 @@ else
 end
 
 # Load dummy app
-require File.expand_path("../dummy/config/environment.rb", __FILE__)
-ActiveRecord::Migrator.migrations_paths = [File.expand_path("../dummy/db/migrate", __FILE__)]
+require "combustion"
+Combustion.path = "spec/dummy"
+Combustion.initialize! :all
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
