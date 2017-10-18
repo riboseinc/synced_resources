@@ -199,20 +199,20 @@ RSpec.describe SyncedResources::Base, type: :controller do
     # don't output all the migration activity
     # ActiveRecord::Migration.verbose = false
 
-      begin
-        ActiveRecord::Schema.define(version: 1) do
-          drop_table :dummy_resources
-        end
-      rescue => e
-        warn e.backtrace
-      end
-
+    begin
       ActiveRecord::Schema.define(version: 1) do
-        create_table :dummy_resources do |t|
-          t.datetime :updated_at
-          t.datetime "created_at"
-        end
+        drop_table :dummy_resources
       end
+    rescue => e
+      warn e.backtrace
+    end
+
+    ActiveRecord::Schema.define(version: 1) do
+      create_table :dummy_resources do |t|
+        t.datetime :updated_at
+        t.datetime "created_at"
+      end
+    end
   end
 
   before do
