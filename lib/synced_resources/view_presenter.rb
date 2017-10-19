@@ -150,7 +150,8 @@ module SyncedResources
         end
       end
       parsed = {}.merge!(@cfg[:default], &restriction)
-      parsed.merge!(params.stringify_keys || {}, &restriction)
+      params_h = params.try(:to_unsafe_h) || params.to_h || {}
+      parsed.merge!(params_h.stringify_keys, &restriction)
       parsed.reject! { |key, value| (key == "action") || (key == "controller") }
       @params = parsed.with_indifferent_access
       self
