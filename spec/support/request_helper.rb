@@ -10,8 +10,17 @@ module RequestHelper
   end
 
   # JSON-HTTP Request!
+  #
+  # TODO Actually, it should in the opposite way.  That is, the arguments list
+  # should resemble these new-fashioned keyword-arguments-based methods
+  # of Rails 5.
   def jhr(method, action, params = {}, session = nil)
-    xhr method, action, { format: "json" }.merge(params), session
+    case Rails::VERSION::MAJOR
+    when 4
+      xhr method, action, { format: "json" }.merge(params), session
+    else
+      public_send method, action, params: { xhr: true, format: "json" }.merge(params), session: session
+    end
   end
 
   # define #jindex, #jshow, #jupdate, #jdestroy & #jcreate
