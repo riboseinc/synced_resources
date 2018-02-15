@@ -14,8 +14,8 @@ module SyncedResources
       SyncedResources.base_time
     end
 
-    def time_to_synced_at(time = Time.now.utc)
-      (time.to_f * 1000).to_i - base_time
+    def time_to_synced_at time = Time.now.utc
+      SyncedResources.time_to_synced_at(time)
     end
 
     # Decode_sync_str already adds VERSION.last_committed_at for us

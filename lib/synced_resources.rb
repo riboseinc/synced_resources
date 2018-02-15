@@ -17,6 +17,10 @@ module SyncedResources
 
   class << self
     attr_accessor :base_time, :sync_string_encoder, :sync_string_decoder
+
+    def time_to_synced_at time = Time.now.utc
+      (time.to_f * 1000).to_i - base_time
+    end
   end
 
   # +base_time+ is like a y-intercept.  It is used for the normalization of the
