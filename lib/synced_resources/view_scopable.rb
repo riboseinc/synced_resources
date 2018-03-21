@@ -74,7 +74,7 @@ module SyncedResources
           # no specified order
           else
             all
-          end.group(arel_table[primary_key])
+          end
         }
       end
     end
