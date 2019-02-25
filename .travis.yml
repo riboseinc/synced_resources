@@ -8,7 +8,10 @@ env:
   - DB_USER="travis" DB_NAME="synced_resources_test"
 
 before_install:
-  - gem install bundler -v 1.15.3
+  - gem install bundler -v 1.17.3
+
+install:
+  - bundle _1.17.3_ install --jobs=3 --retry=3 --path=${BUNDLE_PATH:-vendor/bundle}
 
 before_script:
   - mysql -e 'CREATE DATABASE $DB_NAME;'
