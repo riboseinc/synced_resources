@@ -22,19 +22,19 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "inherited_resources", "~> 1.8"
+  spec.add_dependency "inherited_resources"
   spec.add_dependency "responders"
-  spec.add_dependency "rails", ">= 4.0", "< 6.0"
+  spec.add_dependency "rails", ">= 4.0", "< 7.0"
 
-  spec.add_development_dependency "bundler", ">= 1.15"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "combustion"
   spec.add_development_dependency "database_cleaner"
   spec.add_development_dependency "pry"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rake", "~> 12.3"
+  spec.add_development_dependency "rspec", "~> 4.0"
   spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "rubocop", "~> 0.49.1"
-  spec.add_development_dependency "mysql2", ">= 0.3.20"
+  spec.add_development_dependency "rubocop", "~> 0.52"
+  spec.add_development_dependency "mysql2", "~> 0.5.0"
   spec.add_development_dependency "simplecov"
   spec.add_development_dependency "sqlite3"
 end
